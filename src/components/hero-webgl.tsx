@@ -2,8 +2,9 @@ import { Canvas, extend, useFrame } from "@react-three/fiber"
 import { useAspect, useTexture } from "@react-three/drei"
 import { useMemo, useRef, useState, useEffect } from "react"
 import * as THREE from "three"
+import { Button } from "@/components/ui/button"
 
-const TEXTUREMAP = { src: "https://i.postimg.cc/XYwvXN8D/img-4.png" }
+const TEXTUREMAP = { src: "https://cdn.poehali.dev/projects/44ac4dd6-a17f-4326-8350-4b6c4dfd5275/files/a14e1bd9-e784-4cab-a303-2aea62c822e5.jpg" }
 const DEPTHMAP = { src: "https://i.postimg.cc/2SHKQh2q/raw-4.webp" }
 
 extend(THREE as unknown as Record<string, unknown>)
@@ -114,8 +115,8 @@ const Scene = () => {
 }
 
 export const Hero3DWebGL = () => {
-  const titleWords = "Synapse AI".split(" ")
-  const subtitle = "Нейроинтерфейсы нового поколения."
+  const titleWords = "PHYGITAL RACE".split(" ")
+  const subtitle = "Ощутите адреналин — покупайте билеты и следите за гонками в режиме реального времени!"
   const [visibleWords, setVisibleWords] = useState(0)
   const [subtitleVisible, setSubtitleVisible] = useState(false)
   const [delays, setDelays] = useState<number[]>([])
@@ -172,6 +173,20 @@ export const Hero3DWebGL = () => {
           >
             {subtitle}
           </div>
+        </div>
+        <div
+          className={`mt-8 flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto ${subtitleVisible ? "fade-in-subtitle" : ""}`}
+          style={{
+            animationDelay: `${titleWords.length * 0.13 + 0.6 + subtitleDelay}s`,
+            opacity: subtitleVisible ? undefined : 0,
+          }}
+        >
+          <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-orbitron text-lg px-10 py-6 border-0 pulse-button">
+            🏁 Купить билеты
+          </Button>
+          <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 font-orbitron text-lg px-10 py-6 bg-transparent">
+            Смотреть трансляцию
+          </Button>
         </div>
       </div>
 
